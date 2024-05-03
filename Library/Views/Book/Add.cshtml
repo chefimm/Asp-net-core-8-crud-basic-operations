@@ -1,0 +1,62 @@
+﻿@model Library.Models.Book
+@{
+    
+}
+<div class="container pt-5">
+    <div class="row">
+        <div class="col-md-6">
+            <h3>Kitap Ekle</h3>
+            <form asp-action="Add" method="post">
+                <div class="form-group">
+                    <label asp-for="Title">Kitap Adı</label>
+                    <input type="text" class="form-control" asp-for="Title"/>
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="GenreId">Türü</label>
+                    @*<input type="text" class="form-control" asp-for="Title" />*@
+                    <select asp-for="GenreId" asp-items="Model.GenreList" class="form-control">
+                        <option value="">Seçiniz</option>
+                    </select>
+                    <span asp-validation-for="GenreId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Isbn">Isbn</label>
+                    <input type="Isbn" class="form-control" asp-for="Isbn" />
+                    <span asp-validation-for="Isbn" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="TotalPages">Sayfa Sayısı</label>
+                    <input type="number" class="form-control" asp-for="TotalPages" />
+                    <span asp-validation-for="TotalPages" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="AuthorId">Yazar</label>
+                    @*<input type="text" class="form-control" asp-for="Title" />*@
+                    <select asp-for="AuthorId" asp-items="Model.AuthorList" class="form-control">
+                        <option value="">Seçiniz</option>
+                    </select>
+                    <span asp-validation-for="AuthorId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PublisherId">Yayıncı</label>
+                    @*<input type="text" class="form-control" asp-for="Title" />*@
+                    <select asp-for="PublisherId" asp-items="Model.PublisherList" class="form-control">
+                        <option value="">Seçiniz</option>
+                    </select>
+                    <span asp-validation-for="PublisherId" class="text-danger"></span>
+                </div>
+                @if (TempData["msg"] != null)
+                {
+                    <div class="form-group">
+                        @TempData["msg"]
+                    </div>
+                }
+                <div class="form-group pt-3">
+                <button type="submit" class="btn btn-dark">Kaydet</button>
+                <a href="/Book/GetAll" class="btn btn-primary">Listele</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+﻿@model Library.Models.Author
+@{
+    
+}
+<div class="container pt-5">
+    <div class="row">
+        <div class="col-md-6">
+            <h3>Yazar Ekle</h3>
+            <form asp-action="Add" method="post">
+                <div class="form-group">
+                    <label asp-for="AuthorName">Yazar İsim</label>
+                    <input type="text" class="form-control" asp-for="AuthorName" />
+                    <span asp-validation-for="AuthorName" class="text-danger"></span>
+                </div>
+                
+                @if (TempData["msg"] != null)
+                {
+                    <div class="form-group">
+                        @TempData["msg"]
+                    </div>
+                }
+                <div class="form-group pt-3">
+                <button type="submit" class="btn btn-dark">Kaydet</button>
+                    <a href="/Author/GetAll" class="btn btn-primary">Listele</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
